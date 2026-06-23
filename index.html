@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Dalarivercabin</title>
+  <meta name="description" content="Bagarstugan - A cozy Swedish nature retreat by the river with hiking, fishing and timeless warmth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-Kl7bk9QkX+9Rwa5uKfQ7hD2X9Ovf3M3lGQEgZ2ZM02hQO0es4pD0eT7unv3VhChja6XHHMdS7WFJLszj2XQ6sQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232C4A3E'/><text x='50' y='58' font-size='48' text-anchor='middle' fill='%23F5F0EB' font-family='Inter'>B</text></svg>" />
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #F5F0EB;
+      --forest: #2C4A3E;
+      --wood: #8B7355;
+      --dark: #1F2D27;
+      --soft: #64715D;
+      --shadow: 0 32px 80px rgba(44, 74, 62, 0.12);
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 240, 235, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44, 74, 62, 0.07);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .brand span {
+      color: var(--wood);
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(44, 74, 62, 0.2);
+      border-radius: 14px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .nav-toggle i {
+      color: var(--forest);
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      position: absolute;
+      inset: 70px 1.25rem auto auto;
+      background: #fff;
+      border: 1px solid rgba(44, 74, 62, 0.1);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      width: calc(100% - 2.5rem);
+      max-width: 320px;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: all 0.25s ease;
+    }
+
+    .nav-links.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .nav-links li a {
+      display: block;
+      padding: 0.95rem 1rem;
+      border-radius: 14px;
+      transition: background 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      left: 1rem;
+      right: 1rem;
+      bottom: 0.85rem;
+      background: var(--wood);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+      opacity: 0.7;
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a:focus-visible {
+      background: rgba(44, 74, 62, 0.08);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(44, 74, 62, 0.25), rgba(44, 74, 62, 0.45));
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('pictures/1.jpg') center/cover no-repeat;
+      filter: brightness(0.64) contrast(1.05);
+      transform: scale(1.02);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1.5rem;
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.2rem;
+      animation: fadeIn 1s ease both;
+    }
+
+    .hero-content h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .hero-content p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 1.05rem;
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+    }
+
+    .btn,
+    .btn-alt {
+      padding: 0.95rem 1.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn {
+      background: var(--wood);
+      color: #fff;
+    }
+
+    .btn-alt {
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--forest);
+      border-color: rgba(44, 74, 62, 0.12);
+    }
+
+    .btn:hover,
+    .btn-alt:hover {
+      transform: translateY(-2px);
+    }
+
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      display: grid;
+      gap: 3rem;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-head h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 36px 72px rgba(44, 74, 62, 0.14);
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .text-block {
+      color: var(--dark);
+    }
+
+    .text-block p {
+      margin: 0 0 1rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .feature-item {
+      display: grid;
+      gap: 0.5rem;
+      padding: 1.2rem 1.3rem;
+      border-radius: 18px;
+      background: rgba(44, 74, 62, 0.04);
+    }
+
+    .feature-item strong {
+      color: var(--forest);
+      display: block;
+      font-size: 0.98rem;
+      letter-spacing: 0.01em;
+    }
+
+    .feature-item span {
+      color: var(--soft);
+      font-size: 0.95rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .gallery-grid--featured {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .featured-card {
+      overflow: hidden;
+      border-radius: 28px;
+      min-height: 260px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 60px rgba(44, 74, 62, 0.14);
+    }
+
+    .featured-card img,
+    .gallery-grid .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-grid .tile:hover img,
+    .featured-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-grid--tiles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .carousel-frame {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      min-height: 60vh;
+    }
+
+    .carousel-frame img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1.1rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .carousel-btn.prev {
+      left: 1rem;
+    }
+
+    .carousel-btn.next {
+      right: 1rem;
+    }
+
+    .lightbox-counter {
+      text-align: center;
+      padding: 1rem 1.25rem;
+      color: #f5f0eb;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+    }
+
+    .gallery-grid .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      min-height: 220px;
+      cursor: pointer;
+    }
+
+    .gallery-grid .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-grid .tile:hover img {
+      transform: scale(1.05);
+    }
+
+    .booking-panel {
+      display: grid;
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .booking-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .booking-card {
+      background: #fff;
+      border-radius: 26px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .booking-card h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+    }
+
+    .booking-card p {
+      margin: 0;
+      color: var(--soft);
+    }
+
+    .booking-card .booking-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .booking-card .booking-actions a {
+      flex: 1 1 45%;
+      min-width: 140px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1rem;
+      border-radius: 999px;
+      background: var(--forest);
+      color: #fff;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+
+    .booking-card .booking-actions a.alt {
+      background: rgba(44, 74, 62, 0.08);
+      color: var(--dark);
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .field label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(44, 74, 62, 0.15);
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      font-size: 1rem;
+      color: var(--dark);
+      background: #fcfaf6;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--forest);
+      box-shadow: 0 0 0 4px rgba(44, 74, 62, 0.08);
+    }
+
+    .field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-actions button {
+      background: var(--forest);
+      color: #fff;
+      border: none;
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .form-actions button:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      background: #fff;
+      border-top: 1px solid rgba(44, 74, 62, 0.08);
+      padding: 2rem 1.25rem 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+      text-align: center;
+      color: var(--soft);
+    }
+
+    .footer-inner p {
+      margin: 0;
+    }
+
+    .footer-inner a {
+      color: var(--forest);
+      font-weight: 600;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 19, 14, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 50;
+      overflow: auto;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-panel {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    .lightbox img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      border: none;
+      color: #fff;
+      font-size: 1.15rem;
+      cursor: pointer;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .nav-inner {
+        padding: 1rem 2rem;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .nav-links {
+        position: static;
+        width: auto;
+        max-width: none;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0;
+      }
+
+      .nav-links ul {
+        grid-auto-flow: column;
+        gap: 1.5rem;
+      }
+
+      .nav-links li a {
+        padding: 0.4rem 0;
+        border-radius: 0;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .page-content {
+        padding-top: 3rem;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1.3fr 1fr;
+      }
+
+      .gallery-grid--featured {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+      }
+
+      .gallery-grid--featured .featured-card {
+        min-height: 420px;
+      }
+
+      .gallery-grid--tiles {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .booking-panel {
+        grid-template-columns: 1.2fr 1fr;
+      }
+
+      .gallery-grid--featured {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .gallery-grid--tiles {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(24px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#home" class="brand"><span>Bagarstugan</span><strong>River Cottage</strong></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p style="letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.82); font-size:0.92rem;">A calm river escape in the heart of Swedish nature</p>
+        <h1>Bagarstugan</h1>
+        <p>Your Swedish Nature Retreat — a small log house by the river with warm wood tones, scenic hikes and timeless comfort.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#about">Discover the cottage</a>
+          <a class="btn-alt" href="#contact">Book your stay</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-content">
+      <section class="card reveal" id="about">
+        <div class="section-head">
+          <h2>About Bagarstugan</h2>
+          <p>A cozy cottage with stories of the old wood-fired oven, located between two mountains beside the river.</p>
+        </div>
+        <div class="grid-2">
+          <div class="text-block">
+            <p>Bagarstugan (The Baker's Cottage) is nestled between two mountains by a serene river. Formerly the farm’s baking place until 1970, it once held a large wood-fired oven for making flatbread. Today the cottage has been renovated with modern comfort while preserving its cozy and warm atmosphere.</p>
+            <p>The ground floor offers a welcoming living room and kitchen with natural materials and soft light. Upstairs there are two peaceful bedrooms where the quiet woodlands and river air set the tone for restful nights.</p>
+            <p>Along the lake you can fish for pike, perch and salmon. A wood-fired sauna can be booked through the host. The hostess lives on the farm and enjoys helping guests plan local experiences.</p>
+          </div>
+          <div class="feature-list">
+            <div class="feature-item"><strong>Historic cottage</strong><span>Originally a baker's cabin; now one of Dalarna’s most charming stays.</span></div>
+            <div class="feature-item"><strong>Riverside location</strong><span>Calm water, fishing spots and nature right outside the door.</span></div>
+            <div class="feature-item"><strong>Warm atmosphere</strong><span>Soft woods, comfy bedrooms and a peaceful countryside charm.</span></div>
+            <div class="feature-item"><strong>Local host</strong><span>The hostess lives on the farm and can guide your stay.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="section-head">
+          <h2>Excursions & Attractions</h2>
+          <p>Discover the best hikes, museums and nature trips near Bagarstugan.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card feature-list">
+            <div class="feature-item"><strong>Climb Storsnäll</strong><span>For stronger hikers; enjoy views from Väsaberget and Hyckjeberg (5–30 min away). Hyckjeberg has a royal bench.</span></div>
+            <div class="feature-item"><strong>Fly fishing</strong><span>Try Dalälven and Rotälven for a classic Swedish fishing experience.</span></div>
+            <div class="feature-item"><strong>Porfyr Museum</strong><span>Explore 18th-century rock technology and local geology.</span></div>
+            <div class="feature-item"><strong>Hagströms Museum</strong><span>See historic accordions and guitars made in Älvdalen.</span></div>
+          </div>
+          <div class="card feature-list">
+            <div class="feature-item"><strong>Älvdalen swimming hall</strong><span>50m pool, just 5 minutes away.</span></div>
+            <div class="feature-item"><strong>Zorn Museum</strong><span>25 minutes to Mora for art, culture and history.</span></div>
+            <div class="feature-item"><strong>Orsa Grönklitt</strong><span>30 minutes to the wildlife park and winter activities.</span></div>
+            <div class="feature-item"><strong>Tomteland</strong><span>45 minutes to the magical Santa-themed family park.</span></div>
+            <div class="feature-item"><strong>Fulufjället</strong><span>1 hour to the national park with dramatic waterfalls and trails.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="section-head">
+          <h2>Nearby amenities & distances</h2>
+          <p>From the local village to Mora and beyond, the best of Dalarna is within reach.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card feature-list">
+            <div class="feature-item"><strong>Älvdalen center — 5 min</strong><span>Grocery, pharmacy, health center, fishing and sport shop, craft shop, hardware store, and Systembolaget.</span></div>
+            <div class="feature-item"><strong>Mora — 20 min</strong><span>Regional museums, cafes, and local culture including the Zorn Museum.</span></div>
+            <div class="feature-item"><strong>Rättvik & Sälen — 1 hour</strong><span>Classic Dalarna destinations for lakeside views, hiking and winter adventure.</span></div>
+            <div class="feature-item"><strong>Idre — 1.5 hours</strong><span>Mountain trails, skiing and wild nature in north-western Dalarna.</span></div>
+          </div>
+          <div class="card feature-list">
+            <div class="feature-item"><strong>Local services</strong><span>Nearby shops and services include grocery, pharmacy, health center, fishing/sports shop, craft shop, hardware store and Systembolaget.</span></div>
+            <div class="feature-item"><strong>Everything close</strong><span>Enjoy easy access to support services while still staying in a quiet countryside retreat.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal" id="properties">
+        <div class="section-head">
+          <h2>Gallery</h2>
+          <p>Images that bring the cottage, river and surrounding landscape to life.</p>
+        </div>
+        <div class="gallery-grid gallery-grid--featured">
+          <div class="featured-card" data-image="pictures/2.jpg">
+            <img src="pictures/2.jpg" alt="Bagarstugan cottage entrance" loading="lazy" />
+          </div>
+          <div class="featured-card" data-image="pictures/3.jpg">
+            <img src="pictures/3.jpg" alt="Cottage by the forest" loading="lazy" />
+          </div>
+          <div class="featured-card" data-image="pictures/4.jpg">
+            <img src="pictures/4.jpg" alt="Riverbank near the cottage" loading="lazy" />
+          </div>
+          <div class="featured-card" data-image="pictures/5.jpg">
+            <img src="pictures/5.jpg" alt="Cozy interior details" loading="lazy" />
+          </div>
+        </div>
+        <div class="gallery-grid gallery-grid--tiles" style="margin-top: 1rem;">
+          <div class="tile" data-image="pictures/6.jpg"><img src="pictures/6.jpg" alt="Forest path" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/7.jpg"><img src="pictures/7.jpg" alt="Lake sunset" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/8.jpg"><img src="pictures/8.jpg" alt="River stones" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/9.jpg"><img src="pictures/9.jpg" alt="Cottage at dusk" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/10.jpg"><img src="pictures/10.jpg" alt="Seating area" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/11.jpg"><img src="pictures/11.jpg" alt="Bedroom interior" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/12.jpg"><img src="pictures/12.jpg" alt="Wildflowers" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/13.jpg"><img src="pictures/13.jpg" alt="Nature scene" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/14.jpg"><img src="pictures/14.jpg" alt="Wood interior details" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/15.jpg"><img src="pictures/15.jpg" alt="Evening by the river" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/16.jpg"><img src="pictures/16.jpg" alt="River bridge" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/17.jpg"><img src="pictures/17.jpg" alt="Dock on the lake" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/18.jpg"><img src="pictures/18.jpg" alt="Countryside view" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/19.jpg"><img src="pictures/19.jpg" alt="Living room light" loading="lazy" /></div>
+          <div class="tile" data-image="pictures/20.jpg"><img src="pictures/20.jpg" alt="Outdoor greenery" loading="lazy" /></div>
+        </div>
+      </section>
+
+      <section class="booking-panel reveal">
+        <div class="card">
+          <div class="section-head">
+            <h2>Booking Options</h2>
+            <p>Choose the easiest way to reserve your stay at Bagarstugan.</p>
+          </div>
+          <div class="booking-grid">
+            <div class="booking-card">
+              <h3>Contact Directly</h3>
+              <p>Send a message to Karin for the fastest response and a personal booking experience.</p>
+              <div class="booking-actions">
+                <a class="alt" href="mailto:karin.bogg@gmail.com"><i class="fa-solid fa-envelope"></i>Email Karin</a>
+                <a href="tel:+46730499855"><i class="fa-solid fa-phone"></i>Call 073 049 9855</a>
+              </div>
+            </div>
+            <div class="booking-card">
+              <h3>Online Booking</h3>
+              <p>Book through trusted rental sites for easy confirmation and flexible arrival options.</p>
+              <div class="booking-actions">
+                <a href="#" aria-label="Booking.com placeholder"><i class="fa-solid fa-link"></i>Booking.com</a>
+                <a class="alt" href="#" aria-label="Airbnb placeholder"><i class="fa-solid fa-bed"></i>Airbnb</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="contact-card" id="contact">
+          <div class="section-head">
+            <h2>Contact & Request</h2>
+            <p>Use this form to send your request directly to Karin. All fields are required.</p>
+          </div>
+          <form id="contactForm">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="+46 73 049 9855" required /></div>
+            <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us about your stay and dates" required></textarea></div>
+            <div class="form-actions">
+              <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send request</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>Bagarstugan - Dalarivercabin.com | Karin Sweden</p>
+      <p>Email: <a href="mailto:karin.bogg@gmail.com">karin.bogg@gmail.com</a> | Phone: <a href="tel:+46730499855">073 049 9855</a> | <a href="contact.html">Contact page</a></p>
+      <p>&copy; 2026 Bagarstugan. Simple nature stays from a place where history and peace meet.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-panel">
+      <button class="lightbox-close" aria-label="Close gallery">&times;</button>
+      <div class="carousel-frame">
+        <button class="carousel-btn prev" aria-label="Previous image">◀</button>
+        <img src="" alt="" id="lightboxImage" />
+        <button class="carousel-btn next" aria-label="Next image">▶</button>
+      </div>
+      <div class="lightbox-counter" id="lightboxCounter">1 / 20</div>
+    </div>
+  </div>
+
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    revealElements.forEach(el => observer.observe(el));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const prevButton = document.querySelector('.carousel-btn.prev');
+    const nextButton = document.querySelector('.carousel-btn.next');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-grid .tile, .gallery-grid .featured-card'));
+    let currentGalleryIndex = 0;
+
+    const updateLightbox = index => {
+      currentGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentGalleryIndex];
+      const src = item.dataset.image || item.querySelector('img')?.src;
+      const alt = item.querySelector('img')?.alt || 'Bagarstugan gallery image';
+
+      lightboxImage.style.opacity = '0';
+      setTimeout(() => {
+        lightboxImage.src = src;
+        lightboxImage.alt = alt;
+      }, 120);
+      lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${galleryItems.length}`;
+    };
+
+    const openLightbox = index => {
+      updateLightbox(index);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    };
+
+    galleryItems.forEach((tile, index) => {
+      tile.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightboxImage.addEventListener('load', () => {
+      lightboxImage.style.opacity = '1';
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    };
+
+    prevButton.addEventListener('click', () => openLightbox(currentGalleryIndex - 1));
+    nextButton.addEventListener('click', () => openLightbox(currentGalleryIndex + 1));
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (!lightbox.classList.contains('open')) return;
+      if (event.key === 'Escape') return closeLightbox();
+      if (event.key === 'ArrowLeft') return openLightbox(currentGalleryIndex - 1);
+      if (event.key === 'ArrowRight') return openLightbox(currentGalleryIndex + 1);
+    });
+
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name || !email || !phone || !message) {
+        alert('Please fill in all fields before sending your message.');
+        return;
+      }
+
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      const subject = encodeURIComponent('Booking request for Bagarstugan');
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+      );
+      window.location.href = `mailto:karin.bogg@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
